@@ -1,0 +1,32 @@
+function fadeTransition() {
+    let brightness = 1; // Current brightness level (0 to 1)
+    const targetBrightness = 0; // Target brightness level (0 to 1)
+    const transitionDuration = 2000; // Transition duration in milliseconds
+    let startTime = null; // To keep track of the start time for the transition
+
+    if (!startTime) startTime = Date.now();
+
+    const currentTime = Date.now();
+    const elapsed = currentTime - startTime;
+
+    // Calculate the current brightness based on the elapsed time and transition duration
+    brightness = Math.max(0, 1 - elapsed / transitionDuration);
+    //brightness = 1
+
+    // Clear the canvas
+    c.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Set the canvas background color based on the current brightness
+    c.fillStyle = `rgba(0, 0, 0, ${brightness})`;
+    c.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Draw other content on the canvas (e.g., game elements, images, etc.)
+    // ...
+
+    // Continue the transition until the target brightness is reached
+    if (brightness > targetBrightness) {
+        requestAnimationFrame(fadeTransition);
+    } else {
+        startTime = null; // Reset the start time for the next transition (if needed)
+    }
+}

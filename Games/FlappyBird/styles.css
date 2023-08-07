@@ -1,0 +1,17 @@
+/*
+#playButton {
+    background-color: red; /* Add a background color to make the button visible 
+}
+    */
+
+    #playButton {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      padding: 10px;
+    }
